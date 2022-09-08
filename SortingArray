@@ -4,27 +4,30 @@ import java.util.*;
 public class SortingArray {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        System.out.print("enter the limit  : ");
+        System.out.print("Enter the limit  : ");
         int limit = scan.nextInt();
         int[] array = new int[limit];
         for(int j=0 ;j<limit;j++)
            array[j] = scan.nextInt();
+        System.out.println("Given Array : ");
+        for(int k=0;k<limit;k++)
+            System.out.print(sort[k]+" ");
         Arrays.sort(array);
         int[] sort = new int[limit];
-        int index=limit/2;
-        if(limit%2==0)
-            index=limit/2-1;
-
+        
+        int index=(limit%2==0)?limit/2-1:limit/2;
+ 
         int i=1,j=0;
         sort[j++]=array[index];
 
         while(j<limit){
-            if(j<limit)
-              sort[j++]=array[index+i];
-            if(j<limit)
-              sort[j++]=array[index-i];
+            sort[j++]=array[index+i];
+            if(j==limit)
+                break;
+            sort[j++]=array[index-i];
             i++;
         }
+        System.out.println("Sorted Array : ");
         for(int k=0;k<limit;k++)
             System.out.print(sort[k]+" ");
     }
