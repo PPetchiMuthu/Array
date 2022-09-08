@@ -1,0 +1,37 @@
+import java.util.Scanner;
+
+public class MultiplyTwoMatrix {
+    static int[][] getMatrix(){
+        Scanner scan = new Scanner(System.in);
+        System.out.print("No of rows : ");
+        int row = scan.nextInt();
+        System.out.print("No of columns : ");
+        int column = scan.nextInt();
+        int[][] matrix = new int[row][column];
+        for(int i=0;i< matrix.length;i++)
+            for(int j=0 ;j<matrix[i].length;j++)
+                matrix[i][j]= scan.nextInt();
+        return matrix;
+    }
+    public static void main(String[] args) {
+        int[][] matrix1 = getMatrix();
+        int[][] matrix2 = getMatrix();
+        int[][] matrix3 = new int[matrix1.length][matrix2[1].length];
+        System.out.println("Output");
+        if(matrix1[1].length==matrix2.length)
+            for(int i=0;i< matrix1.length;i++){
+                for(int j=0;j< matrix2[0].length;j++){
+                    matrix3[i][j]=0;
+                    for(int k=0;k< matrix1[0].length;k++)
+                    {
+                        matrix3[i][j]+=matrix1[i][k]*matrix2[k][j];
+                    }
+                    System.out.print(matrix3[i][j]+" ");
+                }
+                System.out.println();
+            }
+        else
+            System.out.println("Enter the valid Matrix");
+    }
+
+}
