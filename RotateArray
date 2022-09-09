@@ -1,0 +1,46 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class ArrayRotate {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Array size : ");
+        int size = scan.nextInt();
+        int[] array = new int[size];
+        for(int i=0;i<size;i++)
+            array[i] = scan.nextInt();
+        System.out.print("d = ");
+        int d = scan.nextInt();
+        System.out.println("Given Array : ");
+        leftRotate(array,d, size);
+        rightRotate(array,d,size);
+
+    }
+    static void leftRotate(int[] array, int d, int size){
+        int[] leftRotate = new int[size];
+        d=(d<=size)?d:d%size;
+        if(d==0||d==size)
+            leftRotate = array.clone();
+        else
+            for(int index=0;index<size;index++) {
+                if (d == size)
+                    d = 0;
+                leftRotate[index] = array[d++];
+            }
+        System.out.println(Arrays.toString(leftRotate));
+    }
+    static void rightRotate(int[] array, int d, int size){
+        int[] rightRotate = new int[size];
+        d=(d<=size)?d:d%size;
+        d=size-d;
+        if(d==0||d==size)
+            rightRotate = array.clone();
+        else
+            for(int index=0;index<size;index++) {
+                if (d == size)
+                    d = 0;
+                rightRotate[index] = array[d++];
+            }
+        System.out.println(Arrays.toString(rightRotate));;
+    }
+}
