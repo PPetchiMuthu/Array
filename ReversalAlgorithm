@@ -1,0 +1,42 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class ReversalAlgorithm {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Array size : ");
+        int size = scan.nextInt();
+        int[] array = new int[size];
+        for(int i=0;i<size;i++)
+            array[i] = scan.nextInt();
+        System.out.print("d = ");
+        int d = scan.nextInt();
+        System.out.println("Given Array : ");
+        System.out.println(Arrays.toString(array));
+        leftRotate(array,d,size-1);
+        rightRotate(array,d-1,size-1);
+    }
+    static void leftRotate(int[] array,int d, int size){
+        reverse(array,0, d);
+        reverse(array, d+1, size);
+        reverse(array, 0, size);
+        System.out.println("Left Rotate ");
+        System.out.println(Arrays.toString(array));
+    }
+    static void rightRotate(int[] array,int d, int size){
+       reverse(array,0,size-d-1);
+       reverse(array, size-d, size);
+       reverse(array,0,size);
+       System.out.println("Right rotate ");
+        System.out.println(Arrays.toString(array));
+    }
+    static void reverse(int[] array, int start, int end){
+        while (start < end) {
+            int temp = array[start];
+            array[start] = array[end];
+            array[end] = temp;
+            start++;
+            end--;
+        }
+    }
+}
